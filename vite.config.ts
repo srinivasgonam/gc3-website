@@ -5,6 +5,8 @@ import path from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Set by the GitHub Pages workflow; local dev/preview stay at "/".
+  base: process.env.VITE_BASE ?? "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

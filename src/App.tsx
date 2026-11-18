@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
+/** Resolve a public asset against the deploy base (GitHub Pages serves from a subpath). */
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 const Arrow = ({ left = false }: { left?: boolean }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path
@@ -21,7 +24,7 @@ const pods = [
     credit: "120 credits / month",
     copy: "The baseline pod for businesses that need to look and sound consistent, every week.",
     tags: ["Design systems", "Editorial", "Motion"],
-    image: "/gc3/ribbon.webp",
+    image: asset("/gc3/ribbon.webp"),
   },
   {
     name: "Digital Pod",
@@ -30,7 +33,7 @@ const pods = [
     credit: "240 credits / month",
     copy: "Creative plus the growth engine: media, lifecycle, analytics, SEO and community.",
     tags: ["Paid media", "Analytics", "Lifecycle"],
-    image: "/gc3/earth.webp",
+    image: asset("/gc3/earth.webp"),
   },
   {
     name: "Strategy Pod",
@@ -39,7 +42,7 @@ const pods = [
     credit: "360 credits / month",
     copy: "Senior strategic capability with creative and digital delivery built into the same room.",
     tags: ["Research", "Go-to-market", "Operating model"],
-    image: "/gc3/aurora.webp",
+    image: asset("/gc3/aurora.webp"),
   },
   {
     name: "Automation Pod",
@@ -48,7 +51,7 @@ const pods = [
     credit: "Scoped to your systems",
     copy: "Process audit, workflow builds and auditable AI agents, scoped around the way your teams already work.",
     tags: ["AI agents", "Workflows", "Governance"],
-    image: "/gc3/automation.webp",
+    image: asset("/gc3/automation.webp"),
   },
   {
     name: "Interactive Pod",
@@ -57,7 +60,7 @@ const pods = [
     credit: "Scoped to the build",
     copy: "For work that cannot be described in a deck: 3D, XR, configurators and interactive experiences.",
     tags: ["3D experiences", "Configurators", "XR"],
-    image: "/gc3/interactive.webp",
+    image: asset("/gc3/interactive.webp"),
   },
   {
     name: "REMAU",
@@ -66,7 +69,7 @@ const pods = [
     credit: "240 hours / month",
     copy: "Real estate marketing and automation, with creative, digital, 3D and XR capability in one pod.",
     tags: ["Property marketing", "3D & XR", "Automation"],
-    image: "/gc3/remau.webp",
+    image: asset("/gc3/remau.webp"),
   },
 ];
 
@@ -647,7 +650,7 @@ export default function App() {
           <div className="shell process-grid">
             <div className="process-image">
               <img
-                src="/gc3/wave.webp"
+                src={asset("/gc3/wave.webp")}
                 alt="Abstract flowing blue fabric"
                 width="1200"
                 height="675"
@@ -728,16 +731,16 @@ export default function App() {
             </div>
             <div className="insight-grid">
               {[
-                ["The license problem is the real AI bottleneck", "Research", "/gc3/insight-1.jpg"],
+                ["The license problem is the real AI bottleneck", "Research", asset("/gc3/insight-1.jpg")],
                 [
                   "What a pod actually costs against the alternatives",
                   "Perspective",
-                  "/gc3/insight-2.jpg",
+                  asset("/gc3/insight-2.jpg"),
                 ],
                 [
                   "Human-in-the-loop is a delivery model, not a disclaimer",
                   "Field note",
-                  "/gc3/insight-3.jpg",
+                  asset("/gc3/insight-3.jpg"),
                 ],
               ].map(([title, tag, image]) => (
                 <article key={title}>
